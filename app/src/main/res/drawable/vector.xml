@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+    <vector android:viewportHeight="24" android:viewportWidth="24" android:height="24dp" android:width="24dp" android:name="playtopause" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:name="group" android:pivotY="12" android:pivotX="12">
+
+    <path android:name="path" android:strokeWidth="1" android:fillColor="#000000" android:pathData="M 8 5 L 8 19 L 19 12 Z"/>
+
+</group>
+
+</vector>
