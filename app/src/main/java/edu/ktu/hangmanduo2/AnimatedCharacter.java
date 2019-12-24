@@ -42,7 +42,7 @@ public class AnimatedCharacter extends Activity{
 
         // load bitmap from assets
        // Bitmap birdBmp = getBitmapFromAssets(this, "grossini_dance.png");
-        Bitmap birdBmp = BitmapFactory.decodeResource(getResources(), R.drawable.grossini_dance);
+        Bitmap birdBmp = null;
 
         if (birdBmp != null) {
             // cut bitmaps from bird bmp to array of bitmaps

@@ -29,6 +29,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +42,8 @@ import java.util.Random;
 // single player
 public class Game extends Activity {
     private ArrayList<String> words;
-    private int remainingChances, correctlyGuessed;
+    private ArrayList<String> hints = new ArrayList<>();
+    private int remainingChances, correctlyGuessed, randomIntWordsIndex;
     private String wordToGuess;
     private String inputWord;
     private ImageView
@@ -49,7 +52,7 @@ public class Game extends Activity {
             letterU,letterV,letterW,letterX,letterY,letterZ,
             mImgCheck,correct, wrong;
 
-    private TextView inputWordText;
+    private TextView inputWordText, hint, playerName;
     final ArrayList<TextView> textViews = new ArrayList<>();
     final ArrayList<ImageView> healthViews = new ArrayList<>();
     final ArrayList<String> alphabets = new ArrayList<>();
@@ -69,6 +72,7 @@ public class Game extends Activity {
         resetAll();
         setupUIComponents();
         initializeWordsList();
+        initializeWordsHints();
         setWordToGuess();
         setAlphabets();
         initializeLetterImages();
@@ -79,6 +83,8 @@ public class Game extends Activity {
         setHealthViews();
         setPressedAlphabetsHashMap();
 
+        Intent PlayerNameIntent = getIntent();
+        this.playerName.setText(PlayerNameIntent.getStringExtra("userName"));
     }
 
     private void setPressedAlphabetsHashMap() {
@@ -298,6 +304,17 @@ public class Game extends Activity {
         });
 
 
+        // hint text
+        this.hint = (TextView) findViewById(R.id.hint);
+        this.hint.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Game.this, "This is a hint: " + Game.this.hints.get(Game.this.randomIntWordsIndex), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        this.playerName = (TextView) findViewById(R.id.playerName);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -443,12 +460,17 @@ public class Game extends Activity {
             // game lost.
             Toast.makeText(Game.this, "You lost the game!", Toast.LENGTH_LONG).show();
             Toast.makeText(Game.this, "The correct word was: " + wordToGuess, Toast.LENGTH_LONG).show();
+
         }else if(correctlyGuessed == wordToGuess.length()){
             // game won.
-            Intent intent = new Intent(Game.this, AnimatedCharacter.class);
+//            Intent intent = new Intent(Game.this, AnimatedCharacter.class);
+//            startActivity(intent);
+//            finish();
+            Toast.makeText(Game.this, "You won the game!", Toast.LENGTH_LONG).show();
+            resetAll();
+            Intent intent = new Intent(Game.this, Game.class);
             startActivity(intent);
             finish();
-            //Toast.makeText(Game.this, "You won the game!", Toast.LENGTH_LONG).show();
         }
 
     };
@@ -463,18 +485,24 @@ public class Game extends Activity {
         Random r = new Random();
         int Low = 0;
         int High = this.words.size();
-        int Result = r.nextInt(High-Low) + Low;
-        this.wordToGuess = this.words.get(Result);
+        this.randomIntWordsIndex = r.nextInt(High-Low) + Low;
+        this.wordToGuess = this.words.get(this.randomIntWordsIndex);
         Log.d("wrd" , "Word to guess" + this.wordToGuess);
     }
 
     private void initializeWordsList() {
         this.words = new ArrayList<>();
-        this.words.add("LOCATION");
-        this.words.add("TROUSER");
-        this.words.add("CAPACITY");
-        this.words.add("RENOVATE");
+        this.words.add("CARROT");
+        this.words.add("APPLE");
+        this.words.add("AMERICA");
+        this.words.add("LAHORE");
+    }
 
+    private void initializeWordsHints() {
+        this.hints.add("VEGETABLE");
+        this.hints.add("FRUIT");
+        this.hints.add("COUNTRY");
+        this.hints.add("CITY");
     }
 
 

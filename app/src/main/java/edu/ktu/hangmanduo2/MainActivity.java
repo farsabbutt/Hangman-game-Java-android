@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
         this.singlePlayerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Game.class);
+                Intent intent = new Intent(MainActivity.this, PlayerName.class);
                 startActivity(intent);
                 finish();
             }
