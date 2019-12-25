@@ -63,6 +63,10 @@ public class Game extends Activity {
 
     private Button anim;
 
+    private String playerNameStr;
+
+    private boolean gameWon, gameLost;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +88,10 @@ public class Game extends Activity {
         setPressedAlphabetsHashMap();
 
         Intent PlayerNameIntent = getIntent();
-        this.playerName.setText(PlayerNameIntent.getStringExtra("userName"));
+
+        this.playerNameStr = PlayerNameIntent.getStringExtra("userName");
+        String playerNameFullStr = "Player: " + this.playerNameStr;
+        this.playerName.setText(playerNameFullStr);
     }
 
     private void setPressedAlphabetsHashMap() {
@@ -289,8 +296,12 @@ public class Game extends Activity {
         correct = (ImageView) findViewById(R.id.correct);
         wrong = (ImageView) findViewById(R.id.wrong);
 
+        correct.bringToFront();
+        wrong.bringToFront();
+
         correct.setVisibility(View.GONE);
         wrong.setVisibility(View.GONE);
+
 
        anim = (Button) findViewById(R.id.anim);
         // anim button
@@ -469,6 +480,7 @@ public class Game extends Activity {
             Toast.makeText(Game.this, "You won the game!", Toast.LENGTH_LONG).show();
             resetAll();
             Intent intent = new Intent(Game.this, Game.class);
+            intent.putExtra("userName", this.playerNameStr);
             startActivity(intent);
             finish();
         }
@@ -496,13 +508,15 @@ public class Game extends Activity {
         this.words.add("APPLE");
         this.words.add("AMERICA");
         this.words.add("LAHORE");
+        this.words.add("LUNGS");
     }
 
     private void initializeWordsHints() {
-        this.hints.add("VEGETABLE");
-        this.hints.add("FRUIT");
-        this.hints.add("COUNTRY");
-        this.hints.add("CITY");
+        this.hints.add("A vegetable");
+        this.hints.add("A fruit");
+        this.hints.add("A country");
+        this.hints.add("A city");
+        this.hints.add("A body part");
     }
 
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "960826545081",
+    "firebase_url": "https://hangman-game-c3a67.firebaseio.com",
+    "project_id": "hangman-game-c3a67",
+    "storage_bucket": "hangman-game-c3a67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960826545081:android:1c45a235f76bc33f8f9c68",
+        "android_client_info": {
+          "package_name": "com.qosmio.hangmangame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960826545081-kllei4n699i7itm8hg5qht4fk7rgmsec.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQyDGg_XXMn6d9RXF_wEA4ZkWaR_j6P-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960826545081-kllei4n699i7itm8hg5qht4fk7rgmsec.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

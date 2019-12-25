@@ -5,18 +5,39 @@
     android:layout_height="match_parent"
     android:background="@mipmap/bgxxx"
     >
+    <TextView
+        android:id="@+id/playerName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Player:"
+        android:textSize="30sp"
+        android:textColor="#c1f77241"
+        android:gravity="left"
+        android:fontFamily="casual"
+        />
+    <TextView
+        android:id="@+id/hint"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Hint"
+        android:textSize="30sp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#c1f77241"
+        android:gravity="right"
+        android:fontFamily="casual"
+        />
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/word_to_guess"
-    android:layout_marginTop="30dp"
     android:paddingLeft="30dp"
     android:paddingRight="30dp"
     >
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="80dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/word_to_guess"
 
         />
@@ -81,29 +102,12 @@
             android:src="@drawable/wrong"
             android:visibility="gone"
             />
-        <TextView
-            android:id="@+id/hint"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:text="Hint"
-            android:textSize="30sp"
-            android:textColor="#000000"
-            />
-        <TextView
-            android:id="@+id/playerName"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:text=""
-            android:textSize="30sp"
-            android:textColor="#000000"
-            android:layout_marginLeft="250dp"
-            />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="45dp"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_below="@+id/health_rel_layout"
@@ -393,6 +397,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/anim"
         android:text="anim"
+        android:visibility="gone"
         />
 </RelativeLayout>
 
